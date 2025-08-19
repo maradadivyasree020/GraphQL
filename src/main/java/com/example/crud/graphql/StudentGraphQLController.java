@@ -51,4 +51,10 @@ public class StudentGraphQLController {
         repo.deleteById(id);
         return true;
     }
+
+    @QueryMapping
+    public List<Student> searchStudents(@Argument String keyword) {
+        return repo.findByNameContainingIgnoreCaseOrEmailContainingIgnoreCase(keyword, keyword);
+    }
+
 }
